@@ -163,19 +163,19 @@ function updateCanvas(term='medium_term') {
         // Case
         // Text
         const paperUrl = [
-            '/img/paper0.png',
-            '/img/paper1.png',
+            '../img/paper0.png',
+            '../img/paper1.png',
         ][Math.floor(Math.random() * 2)];
         
         // 65,56 / 2 = 32, 28
         const stickerUrl = [
-            '/img/sticker0.png',
-            '/img/sticker1.png',
+            '../img/sticker0.png',
+            '../img/sticker1.png',
         ][Math.floor(Math.random() * 2)];
         
         const cassetteUrl = [
-            '/img/cassette0.png',
-            '/img/cassette1.png',
+            '../img/cassette0.png',
+            '../img/cassette1.png',
         ][Math.floor(Math.random() * 2)];
         
 
@@ -187,7 +187,7 @@ function updateCanvas(term='medium_term') {
             return addImageToCanvas(cassetteUrl, 32, 28);
         })
         .then(function() {
-            return addImageToCanvas('/img/case0.png')
+            return addImageToCanvas('../img/case0.png')
         })
         .then(function() {
         
