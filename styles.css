@@ -1,0 +1,100 @@
+:root {
+    --primary-colour: #583e26;
+    --secondary-colour: #a07b5a;
+    --background-colour: #e9d8be;
+    --background-highlighted-colour: #e6bf86;
+}
+h2, h3, h4 {
+    font-weight: bolder;
+}
+.card-body {
+    background-color: #ebebeb;
+}
+.login-button:hover {
+    background-color: #4cda7e;
+}
+main {
+    
+    height: 100vh;
+    background-image: url('/img/beige-wooden-textured-flooring-background_53876-104668.avif');
+    /* background-image: url('/img/wood-background.avif'); */
+    /* padding-top: 20vh; */
+    padding-bottom: 150vh;
+}
+body {
+    /* background-color: #fffffa; */
+    background-color: var(--background-colour);
+    /* background-color: var(--background-colour); */
+    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.login-button {
+    padding:16px 40px; 
+    background-color: #1db954;
+    border: #000000;
+    color: #ffffff;
+}
+.login-button:hover {
+    background-color: #4cda7e;
+}
+
+
+
+/* Navbar background colour */
+.navbar {
+    background-color: var(--primary-colour);
+}
+/* Left title */
+.navbar-brand {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+#controlpanel {
+    text-align: center;
+    padding-top: 5%;
+    /* padding-bottom: 20vh; */
+    /* height: 20vh; */
+    padding-bottom: 20vh;
+}
+#controlpanel .btn {
+    /* text colour */
+    color: #000000;
+    font-weight: 600;
+    /* fill: #1db954; */
+    /* background: #000000; */
+    /* border-radius: 0; */
+    /* background-color: #4000ff; */
+    /* --bs-btn-active-bg: #636363; */
+    
+    border: none;
+}
+#controlpanel .btn-check:checked + .btn {
+    color: #eeeeee;
+    background-color: var(--primary-colour);
+}
+#controlpanel .btn-group {
+    background-color: var(--secondary-colour);
+}
+
+
+#information {
+    /* box-shadow: 10px 10px; */
+    /* padding-top: 50vh; */
+}
+
+#information .accordion-button {
+    background-color: var(--secondary-colour);
+    /* background-color: #e9dbbe; */
+    font-weight: bold;
+    /* box-shadow: 10px 10px 10px !important; */
+}
+#information .accordion-item {
+    background-color: var(--background-highlighted-colour);
+}
+#information .accordion-button:not(.collapsed):not(:disabled) {
+    color:#c0c0c0;
+    background-color: var(--primary-colour);
+    box-shadow: 0 3px 5px #000000 !important;
+}
