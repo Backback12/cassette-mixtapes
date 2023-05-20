@@ -293,7 +293,7 @@ function updateCanvas(term='medium_term') {
             canvas.moveTo(trackText, 10);
             
         }
-        });
+        });   // .then layer chain
     }); // font.load.then
 }
 
