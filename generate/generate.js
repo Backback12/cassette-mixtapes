@@ -31,7 +31,7 @@
             error: function(err) {
                 if (err.status === 401) {
                     // Invalid or Expired Token
-                    window.location.href = "/?error=invalid_token";
+                    window.location.href = "../?error=invalid_token";
                 } else {
                     // Bad Request
                     reject(new Error(`Request failed: ${err.statusText}`));
