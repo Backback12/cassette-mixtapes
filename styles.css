@@ -16,7 +16,7 @@ h2, h3, h4 {
 main {
     
     height: 100vh;
-    background-image: url('/img/beige-wooden-textured-flooring-background_53876-104668.avif');
+    background-image: url('../img/beige-wooden-textured-flooring-background_53876-104668.avif');
     /* background-image: url('/img/wood-background.avif'); */
     /* padding-top: 20vh; */
     padding-bottom: 150vh;
