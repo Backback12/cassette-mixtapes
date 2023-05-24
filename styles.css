@@ -1,8 +1,10 @@
 :root {
-    --primary-colour: #583e26;
-    --secondary-colour: #a07b5a;
-    --background-colour: #e9d8be;
-    --background-highlighted-colour: #e6bf86;
+    /* --primary-colour: #583e26; */
+    --primary-dark: #403A36;
+    --primary-text: #EEEEEE;
+    --secondary-dark: #5C5652;
+    --background-colour: #F7E7DC;
+    --background-highlighted-colour: #CCAC95;
 }
 h2, h3, h4 {
     font-weight: bolder;
@@ -43,11 +45,11 @@ body {
 
 /* Navbar background colour */
 .navbar {
-    background-color: var(--primary-colour);
+    background-color: var(--primary-dark);
 }
 /* Left title */
 .navbar-brand {
-    color: #ffffff;
+    color: #eeeeee;
     font-weight: 700;
 }
 
@@ -72,22 +74,24 @@ body {
 }
 #controlpanel .btn-check:checked + .btn {
     color: #eeeeee;
-    background-color: var(--primary-colour);
+    background-color: var(--primary-dark);
 }
 #controlpanel .btn-group {
-    background-color: var(--secondary-colour);
+    background-color: var(--secondary-dark);
 }
 
 
 #information {
     /* box-shadow: 10px 10px; */
+    border: #000000;
     /* padding-top: 50vh; */
 }
 
 #information .accordion-button {
-    background-color: var(--secondary-colour);
+    background-color: var(--secondary-dark);
     /* background-color: #e9dbbe; */
     font-weight: bold;
+    color: var(--primary-text);
     /* box-shadow: 10px 10px 10px !important; */
 }
 #information .accordion-item {
@@ -95,6 +99,6 @@ body {
 }
 #information .accordion-button:not(.collapsed):not(:disabled) {
     color:#c0c0c0;
-    background-color: var(--primary-colour);
+    background-color: var(--primary-dark);
     box-shadow: 0 3px 5px #000000 !important;
 }
