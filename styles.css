@@ -6,8 +6,9 @@
     --background-colour: #F7E7DC;
     --background-highlighted-colour: #CCAC95;
 }
+
 h2, h3, h4 {
-    font-weight: bolder;
+    font-weight: 500;
 }
 .card-body {
     background-color: #ebebeb;
@@ -15,20 +16,36 @@ h2, h3, h4 {
 .login-button:hover {
     background-color: #4cda7e;
 }
+/* Authentication error and token error */
+.error-container {
+    padding: 20px;
+}
+.alert {
+    padding: 20px;
+    display: none;
+}
 main {
-    
+    /* position: absolute; */
     height: 100vh;
     background-image: url('img/beige-wooden-textured-flooring-background_53876-104668.avif');
     /* background-image: url('/img/wood-background.avif'); */
     /* padding-top: 20vh; */
-    padding-bottom: 150vh;
+    /* padding-bottom: 150vh; */
+    /* position: absolute; */
+    /* top: 0; */
+    left: 0;
+    /* width: 100%; */
+    /* height: 100%; */
+    padding: 5%;
 }
 body {
     /* background-color: #fffffa; */
     background-color: var(--background-colour);
     /* background-color: var(--background-colour); */
     /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* font-family: 'Segoe UI Bold', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+    /* font-family: 'Futura Primer', sans-serif; */
+    font-family: 'Utendo', sans-serif;
 }
 
 .login-button {
@@ -50,15 +67,17 @@ body {
 /* Left title */
 .navbar-brand {
     color: #eeeeee;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 #controlpanel {
     text-align: center;
-    padding-top: 5%;
+    /* padding-top: 5%; */
     /* padding-bottom: 20vh; */
     /* height: 20vh; */
-    padding-bottom: 20vh;
+    /* padding-bottom: 20vh; */
+    /* background: #1db95455; */
+    height: 15%;
 }
 #controlpanel .btn {
     /* text colour */
@@ -79,7 +98,14 @@ body {
 #controlpanel .btn-group {
     background-color: var(--secondary-dark);
 }
-
+#bottombuttons {
+    text-align: center;
+}
+#bottombuttons .btn {
+    background-color: #1db95455;
+    border: none;
+    background-color: var(--secondary-dark);
+}
 
 #information {
     /* box-shadow: 10px 10px; */
@@ -101,4 +127,50 @@ body {
     color:#c0c0c0;
     background-color: var(--primary-dark);
     box-shadow: 0 3px 5px #000000 !important;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: #1db954b4; */
+}
+
+/* @font-face {
+    font-family: 'Reenie Beanie';
+    src: url('../lib/reenie-beanie/ReenieBeanie.woff') format('woff');
+    src: url('../lib/reenie-beanie/ReenieBeanie.ttf') format('truetype');
+} */
+#canvas-container {
+    position: relative;
+    width: 95%;
+    margin: 0 auto;
+    max-width: 60vh;
+    /* padding: 2%; */
+    /* height: 80%; */
+    /* background-color: #ff0000aa; */
+    
+}
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
+
+
+
+.top-block {
+    height: 56.72%;
+}
+table {
+    width: 100%;
+    height: 38%;
+    border-collapse: collapse;
+}
+
+td {
+    /* border: 1px solid #f00; */
+    /* padding: 10px; */
 }
