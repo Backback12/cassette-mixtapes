@@ -79,39 +79,62 @@ function loadUserData() {
 
 
 
+/*
+* 
+* Spotify Guidelines:
+*   Playlist/album name: 25 characters  - not needed
+*   Artist name: 18 characters
+*   Track name: 23 characters
+*  
+*   
+*/
 function updateCanvas(term='medium_term') {
+    // Layer Images:
+    // Paper
+    // Sticker
+    // Cassette Case
+    // Case
+    // Text
+    const paperUrl = [
+        '../img/paper0.png',
+        '../img/paper1.png',
+    ][Math.floor(Math.random() * 2)];
+    
+    const stickerUrl = [
+        '../img/sticker0.png',
+        '../img/sticker1.png',
+    ][Math.floor(Math.random() * 2)];
+    
+    const cassetteUrl = [
+        '../img/cassette0.png',
+        '../img/cassette1.png',
+    ][Math.floor(Math.random() * 2)];
+
+    const caseUrl = [
+        '../img/case0.png',
+    ][Math.floor(Math.random() * 1)];
+
+    const PEN_COLOUR = [
+        '#0654a9', 
+        '#3d4ab1', 
+        '#424192',
+        '#310332'
+    ][Math.floor(Math.random() * 4)];
+
+    const termText = {
+        'short_term': 'LAST MONTH',
+        'medium_term': 'LAST SIX MONTHS',
+        'long_term': 'ALL TIME'
+    }[term];  
+
+    const MAX_LINE_LENGTH = 23;
+
+
+
     return new Promise((resolve, reject) => {
-        const PEN_COLOUR = [
-            '#0654a9', 
-            '#3d4ab1', 
-            '#424192',
-            '#310332'
-        ][Math.floor(Math.random() * 4)];
-
-        
-        var termText = {
-            'short_term': 'ONE MONTH',
-            'medium_term': 'SIX MONTHS',
-            'long_term': 'ALL TIME'
-        }[term];  
-        
-
         var canvas = new fabric.StaticCanvas('c');
         canvas.clear();
 
-        /*
-        * writeTracklist
-        *
-        * Writes one side (A or B) or the tracklist
-        * shrinks font size if the line does not fit
-        * 
-        * Guidelines:
-        *   Playlist/album name: 25 characters  - not needed
-        *   Artist name: 18 characters
-        *   Track name: 23 characters
-        *  
-        *   
-        */
         
         var penFont = new FontFaceObserver('Reenie Beanie');
         // var textFont = new FontFaceObserver('Futura Primer');
@@ -136,30 +159,7 @@ function updateCanvas(term='medium_term') {
                 })
             }
 
-            // Layer Images:
-            // Paper
-            // Sticker
-            // Cassette Case
-            // Case
-            // Text
-            const paperUrl = [
-                '../img/paper0.png',
-                '../img/paper1.png',
-            ][Math.floor(Math.random() * 2)];
             
-            const stickerUrl = [
-                '../img/sticker0.png',
-                '../img/sticker1.png',
-            ][Math.floor(Math.random() * 2)];
-            
-            const cassetteUrl = [
-                '../img/cassette0.png',
-                '../img/cassette1.png',
-            ][Math.floor(Math.random() * 2)];
-
-            const caseUrl = [
-                '../img/case0.png',
-            ][Math.floor(Math.random() * 1)];
             
 
             addImageToCanvas(paperUrl)
@@ -173,6 +173,21 @@ function updateCanvas(term='medium_term') {
                 return addImageToCanvas(caseUrl)
             })
             .then(function() {
+                // write text
+
+                // Title
+                var textTitle = new fabric.Text(`TOP TEN MIXTAPE / ${termText}\n${userData['me']['display_name'].toUpperCase()}`, {
+                    fontFamily: 'Reenie Beanie',
+                    fontWeight: '800',
+                    textAlign: 'center',
+                    fill: PEN_COLOUR,
+                    fontSize: 60,
+                    originX: 'center',
+                    left: 548,
+                    top: 94,
+                    lineHeight: 0.90,
+                });
+                canvas.add(textTitle);
                 
                 
                 // Side A Title
@@ -207,35 +222,24 @@ function updateCanvas(term='medium_term') {
                 });
                 canvas.add(textDateA2);
 
-
-                // Title
-                var textTitle = new fabric.Text(`TOP TEN MIXTAPE / ${termText}\n${userData['me']['display_name'].toUpperCase()}`, {
-                    fontFamily: 'Reenie Beanie',
-                    fontWeight: '800',
-                    textAlign: 'center',
-                    fill: PEN_COLOUR,
-                    fontSize: 60,
-                    originX: 'center',
-                    left: 548,
-                    top: 94,
-                    lineHeight: 0.90,
-                });
-                canvas.add(textTitle);
-
-
                 // Write Tracks
                 var trackListText = [];
                 urlList = [];
                 for (let i = 0; i < userData[term]['items'].length; i++) {
-                    trackListText.push(`${i+1}|` + userData[term]['items'][i]['name']);
+                    // trackListText.push(`${i+1}|` + userData[term]['items'][i]['name']);
+                    trackListText.push(userData[term]['items'][i]['name']);
                     trackListText.push("   " + userData[term]['items'][i]['artists'][0]['name']);      // ONLY TAKING FIRST ARTIST??
+                    // CHECK IF YOU CAN FIT MORE ARTISTS IN?
+                    // CHECK IF YOU NEED TO PUT TRACK IN A NEW LINE
+                    // I DON'T WANNA BE OKAY WITHOUT YOU
+                    // THAT IS 33 CHARACTERS
                     urlList.push(userData[term]['items'][i]['external_urls']['spotify']);
                 }
                 // addTrackUrls(urlList);
                 
                 var trackListTextTest = [
-                    "COUNTING EE",
-                    "COUNTING EEE",
+                    // "COUNTING EE",
+                    // "COUNTING EEE",
                     "COUNTING EEEE",
                     "COUNTING FOURT",
                     "THIS HAS FIFTEE",
@@ -254,6 +258,8 @@ function updateCanvas(term='medium_term') {
                     "TWENTY EIGHT IS ALMOST THERE",
                     "TN LETS GO TN LETS GO HAAHHAH",
                     "OKAY THIS ONE IS THE BIG TO WO",
+                    "THIS STRING HAS THIRTY ONE LETT",
+                    "THIRTY TWO. IS THIS STILL LEGIBL",
                 ];
                 for (let i = 0; i < trackListText.length; i++) {
                     var trackText = new fabric.Textbox(trackListText[i].toUpperCase(), {
@@ -262,6 +268,7 @@ function updateCanvas(term='medium_term') {
                         textAlign: 'left',
                         fill: PEN_COLOUR,
                         fontSize: 55,
+                        // fontSize: 10,
                         originX: 'left',
                         left: i < 10 ? 50 : 565,
                         top: 775 + (i % 10) * 51.5,
@@ -272,20 +279,21 @@ function updateCanvas(term='medium_term') {
                     // Custom function to calculate the maximum character spacing that fits the text box
                     function calculateMaxCharSpacing(textbox) {
                         var originalCharSpacing = textbox.charSpacing;
-                    
+                        
                         // Decrese charSpacing until it fits in one line
                         while (textbox.height > 80) {
-                        originalCharSpacing -= 1;
-                        textbox.set({ charSpacing: originalCharSpacing });
+                            originalCharSpacing -= 1;
+                            textbox.set({ charSpacing: originalCharSpacing });
                         }
-                    
+                        
                         return originalCharSpacing;
                     }
-
+                    
                     trackText.set({
                         charSpacing: calculateMaxCharSpacing(trackText),
                         // text: trackText.height.toString(),
                     });
+                    // trackText.scaleToHeight(40);
                     trackText.scaleToHeight(66);
                     canvas.add(trackText);
                     canvas.moveTo(trackText, 10);

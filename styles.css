@@ -4,7 +4,7 @@
     --primary-text: #EEEEEE;
     --secondary-dark: #5C5652;
     --background-colour: #F7E7DC;
-    --background-highlighted-colour: #CCAC95;
+    --background-highlighted-colour: #E9CDB8;
 }
 
 h2, h3, h4 {
@@ -46,6 +46,7 @@ body {
     /* font-family: 'Segoe UI Bold', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
     /* font-family: 'Futura Primer', sans-serif; */
     font-family: 'Utendo', sans-serif;
+    
 }
 
 .login-button {
@@ -173,4 +174,8 @@ table {
 td {
     /* border: 1px solid #f00; */
     /* padding: 10px; */
+}
+
+a {
+    color: inherit;
 }
