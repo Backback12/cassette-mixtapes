@@ -115,19 +115,22 @@ function updateCanvas(term='medium_term') {
     ][Math.floor(Math.random() * 1)];
 
     const PEN_COLOUR = [
-        '#0654a9', 
-        '#3d4ab1', 
+        // '#0654a9', 
+        // '#3d4ab1', 
         '#424192',
         '#310332'
-    ][Math.floor(Math.random() * 4)];
+    ][Math.floor(Math.random() * 2)];
 
+    
     const termText = {
-        'short_term': 'LAST MONTH',
-        'medium_term': 'LAST SIX MONTHS',
-        'long_term': 'ALL TIME'
+        'short_term': 'Last Month',
+        'medium_term': 'Last Six Months',
+        'long_term': 'All Time'
     }[term];  
+    
+    const titleText = `Top lO Mixtape | ${termText}\n${userData['me']['display_name']}`;
 
-    const MAX_LINE_LENGTH = 23;
+    const MAX_LINE_LENGTH = 30;
 
 
 
@@ -176,16 +179,20 @@ function updateCanvas(term='medium_term') {
                 // write text
 
                 // Title
-                var textTitle = new fabric.Text(`TOP TEN MIXTAPE / ${termText}\n${userData['me']['display_name'].toUpperCase()}`, {
+                var textTitle = new fabric.Text(titleText, {
                     fontFamily: 'Reenie Beanie',
                     fontWeight: '800',
                     textAlign: 'center',
                     fill: PEN_COLOUR,
-                    fontSize: 60,
                     originX: 'center',
+                    // fontSize: 60,
+                    // left: 548,
+                    // top: 94,
+                    // lineHeight: 0.90,
+                    fontSize: 75,
                     left: 548,
-                    top: 94,
-                    lineHeight: 0.90,
+                    top: 80,
+                    lineHeight: 0.75,
                 });
                 canvas.add(textTitle);
                 
@@ -221,14 +228,15 @@ function updateCanvas(term='medium_term') {
                     top: 708,
                 });
                 canvas.add(textDateA2);
-
+                
                 // Write Tracks
                 var trackListText = [];
                 urlList = [];
                 for (let i = 0; i < userData[term]['items'].length; i++) {
-                    // trackListText.push(`${i+1}|` + userData[term]['items'][i]['name']);
-                    trackListText.push(userData[term]['items'][i]['name']);
-                    trackListText.push("   " + userData[term]['items'][i]['artists'][0]['name']);      // ONLY TAKING FIRST ARTIST??
+                    trackListText.push(`${i+1}|` + userData[term]['items'][i]['name']);
+                    // trackListText.push(userData[term]['items'][i]['name']);
+                    // trackListText.push("  " + userData[term]['items'][i]['artists'][0]['name']);      // ONLY TAKING FIRST ARTIST??
+                    trackListText.push(userData[term]['items'][i]['artists'][0]['name']);      // ONLY TAKING FIRST ARTIST??
                     // CHECK IF YOU CAN FIT MORE ARTISTS IN?
                     // CHECK IF YOU NEED TO PUT TRACK IN A NEW LINE
                     // I DON'T WANNA BE OKAY WITHOUT YOU
@@ -237,11 +245,11 @@ function updateCanvas(term='medium_term') {
                 }
                 // addTrackUrls(urlList);
                 
-                var trackListTextTest = [
+                var trackListText_off = [
                     // "COUNTING EE",
                     // "COUNTING EEE",
-                    "COUNTING EEEE",
-                    "COUNTING FOURT",
+                    // "COUNTING EEEE",
+                    // "COUNTING FOURT",
                     "THIS HAS FIFTEE",
                     "STRING SIXTEEN!!",
                     "SEVENTEEN CHARACT",
@@ -259,19 +267,94 @@ function updateCanvas(term='medium_term') {
                     "TN LETS GO TN LETS GO HAAHHAH",
                     "OKAY THIS ONE IS THE BIG TO WO",
                     "THIS STRING HAS THIRTY ONE LETT",
-                    "THIRTY TWO. IS THIS STILL LEGIBL",
+                    // "THIRTY TWO. IS THIS STILL LEGIBL",
+                    "boom",
+                    "this string is a very long string. I wonder what it will do",
+                    "BOOM long",
                 ];
+
+                // Modify strings to fit names properly
+                for (let i = 0; i < trackListText.length; i += 2) {
+                // for (let i = 0; i < 0; i++) {
+                    var string1 = trackListText[i].split(" ");
+                    var string2 = trackListText[i+1];
+                    var line1 = "";
+                    var line2 = "";
+
+                    // For each word in string1:
+                    // attempt to fit in line1
+                    
+                    // place string2 into line2
+                    // if extra words in string1:
+                    // place extra words into START of line2, and add /
+                    // else, place a few spaces into START of line2
+                    
+                    // OR try to remove brackets???
+                    if (trackListText[i].length + string2.length + 3 <= MAX_LINE_LENGTH-5) {
+                        // just put on one line
+                        line1 = trackListText[i] + " - " + string2;
+                    }
+                    else {
+                        var line1doneEarly = false;
+                        while (!line1doneEarly && string1.length != 0) {
+                            // list.shift() removes and returns first element
+                            var newWord = string1.shift();
+                            // line1.push();
+                            if (line1.length + newWord.length + 1 > MAX_LINE_LENGTH) {
+                                // too many words
+                                string1.unshift(newWord);
+                                line1doneEarly = true;
+                            }
+                            else {
+                                // word can fit
+                                line1 = line1 + (line1.length === 0 ? "" : " ") + newWord;
+                            }
+                        }
+                        // line2 += string2;
+                        if (line1doneEarly) {
+                            // line1 still has words left 
+                            // line2 = "|" + line2;
+                            var artistLine = " |" + string2;
+                            var line2doneEarly = false;
+                            while (!line2doneEarly && string1.length != 0) {
+                                var newWord = string1.shift();
+                                if (line2.length + newWord.length + 1 + artistLine.length > MAX_LINE_LENGTH) {
+                                    // too many words
+                                    string1.unshift(newWord);
+                                    line2doneEarly = true;
+                                    artistLine = "~" + artistLine;
+                                }
+                                else {
+                                    // word can fit
+                                    // line2 = newWord + (line2[0] === "|" ? "" : " ") + line2;
+                                    line2 = line2 + " " + newWord;
+                                }
+                            }
+                            line2 += artistLine
+                        }
+                        else {
+                            // line is only artist
+                            line2 = "  " + string2;
+                        }
+                    }
+                    trackListText[i] = line1;
+                    trackListText[i+1] = line2;
+                }
+
+
                 for (let i = 0; i < trackListText.length; i++) {
-                    var trackText = new fabric.Textbox(trackListText[i].toUpperCase(), {
+                    var trackText = new fabric.Textbox(trackListText[i], {
                         fontFamily: 'Reenie Beanie',
                         fontWeight: '800',
-                        textAlign: 'left',
+                        // textAlign: 'left',
+                        // textAlign: 'center',
+                        textAlign: i % 2 == 0 ? 'left' : 'right',
                         fill: PEN_COLOUR,
                         fontSize: 55,
                         // fontSize: 10,
                         originX: 'left',
                         left: i < 10 ? 50 : 565,
-                        top: 775 + (i % 10) * 51.5,
+                        top: 775 + i % 10 * 51.5,
                         charSpacing: 0,
                         width: 440,
                         height: 55,
@@ -299,12 +382,17 @@ function updateCanvas(term='medium_term') {
                     canvas.moveTo(trackText, 10);
                     
                 }
-            });   // .then image layer chain
+            })   // .then image layer chain
+            .catch((err) => {
+                console.log("Error displaying images: " + err);
+            });
         })
         .then(() => {
             resolve();
-        }); // font.load.then
-
+        }) // font.load.then
+        .catch((err) => {
+            console.log("Error loading fonts: " + err);
+        });
         
     }); // end returned promise
 }
@@ -398,6 +486,9 @@ $(document).ready(function() {
             // Set up track links
             setUpTrackUrls();
         })
+        .catch((err) => {
+            console.log("Error displaying canvas: " + err);
+        });
         
     }
 });
