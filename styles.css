@@ -89,7 +89,7 @@ body {
     /* border-radius: 0; */
     /* background-color: #4000ff; */
     /* --bs-btn-active-bg: #636363; */
-    
+    background-color: var(--secondary-dark);
     border: none;
 }
 #controlpanel .btn-check:checked + .btn {

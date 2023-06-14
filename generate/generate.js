@@ -130,7 +130,7 @@ function updateCanvas(term='medium_term') {
     
     const titleText = `Top lO Mixtape | ${termText}\n${userData['me']['display_name']}`;
 
-    const MAX_LINE_LENGTH = 30;
+    const MAX_LINE_LENGTH = 31;
 
 
 
@@ -233,7 +233,7 @@ function updateCanvas(term='medium_term') {
                 var trackListText = [];
                 urlList = [];
                 for (let i = 0; i < userData[term]['items'].length; i++) {
-                    trackListText.push(`${i+1}|` + userData[term]['items'][i]['name']);
+                    trackListText.push(`${i+1}. ` + userData[term]['items'][i]['name']);
                     // trackListText.push(userData[term]['items'][i]['name']);
                     // trackListText.push("  " + userData[term]['items'][i]['artists'][0]['name']);      // ONLY TAKING FIRST ARTIST??
                     trackListText.push(userData[term]['items'][i]['artists'][0]['name']);      // ONLY TAKING FIRST ARTIST??
@@ -292,7 +292,7 @@ function updateCanvas(term='medium_term') {
                     // OR try to remove brackets???
                     if (trackListText[i].length + string2.length + 3 <= MAX_LINE_LENGTH-5) {
                         // just put on one line
-                        line1 = trackListText[i] + " - " + string2;
+                        line1 = trackListText[i] + " — " + string2;
                     }
                     else {
                         var line1doneEarly = false;
@@ -314,7 +314,7 @@ function updateCanvas(term='medium_term') {
                         if (line1doneEarly) {
                             // line1 still has words left 
                             // line2 = "|" + line2;
-                            var artistLine = " |" + string2;
+                            var artistLine = " — " + string2;
                             var line2doneEarly = false;
                             while (!line2doneEarly && string1.length != 0) {
                                 var newWord = string1.shift();
@@ -334,7 +334,7 @@ function updateCanvas(term='medium_term') {
                         }
                         else {
                             // line is only artist
-                            line2 = "  " + string2;
+                            line2 = " — " + string2;
                         }
                     }
                     trackListText[i] = line1;
@@ -346,9 +346,9 @@ function updateCanvas(term='medium_term') {
                     var trackText = new fabric.Textbox(trackListText[i], {
                         fontFamily: 'Reenie Beanie',
                         fontWeight: '800',
-                        // textAlign: 'left',
+                        textAlign: 'left',
                         // textAlign: 'center',
-                        textAlign: i % 2 == 0 ? 'left' : 'right',
+                        // textAlign: i % 2 == 0 ? 'left' : 'right',
                         fill: PEN_COLOUR,
                         fontSize: 55,
                         // fontSize: 10,
