@@ -103,12 +103,26 @@ function updateCanvas(term='medium_term') {
     const stickerUrl = [
         '../img/sticker0.png',
         '../img/sticker1.png',
-    ][Math.floor(Math.random() * 2)];
+        '../img/sticker2.png',
+        '../img/sticker3.png',
+        '../img/sticker4.png',
+        '../img/sticker5.png',
+        '../img/sticker6.png',
+        '../img/sticker7.png',
+        '../img/sticker8.png',
+        '../img/sticker9.png',
+        '../img/sticker10.png',
+        '../img/sticker11.png',
+        '../img/sticker12.png',
+        '../img/sticker13.png',
+        '../img/sticker14.png',
+    ][Math.floor(Math.random() * 14)];
     
     const cassetteUrl = [
         '../img/cassette0.png',
         '../img/cassette1.png',
-    ][Math.floor(Math.random() * 2)];
+        '../img/cassette2.png',
+    ][Math.floor(Math.random() * 3)];
 
     const caseUrl = [
         '../img/case0.png',
@@ -189,7 +203,7 @@ function updateCanvas(term='medium_term') {
                     // left: 548,
                     // top: 94,
                     // lineHeight: 0.90,
-                    fontSize: 75,
+                    fontSize: 65,
                     left: 548,
                     top: 80,
                     lineHeight: 0.75,
@@ -380,7 +394,6 @@ function updateCanvas(term='medium_term') {
                     trackText.scaleToHeight(66);
                     canvas.add(trackText);
                     canvas.moveTo(trackText, 10);
-                    
                 }
             })   // .then image layer chain
             .catch((err) => {
